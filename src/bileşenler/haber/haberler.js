@@ -89,6 +89,60 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
   },
 ];
+// 1.adım
+function haberYapici(haberler) {
+  let haber1 = document.createElement("div");
+  haber1.className = "article";
+
+  let baslik = document.createElement("h2");
+  baslik.textContent = haberler.baslik;
+  haber1.appendChild(baslik);
+
+  let tarih1 = document.createElement("p");
+  tarih1.className = "date";
+  tarih1.textContent = haberler.tarih;
+  haber1.appendChild(tarih1);
+
+  let p1 = document.createElement("p");
+  p1.textContent = haberler.ilkParagraf;
+  haber1.appendChild(p1);
+
+  let p2 = document.createElement("p");
+  p2.textContent = haberler.ikinciParagraf;
+  haber1.appendChild(p2);
+
+  let p3 = document.createElement("p");
+  p3.textContent = haberler.ucuncuParagraf;
+  haber1.appendChild(p3);
+
+  let btn1 = document.createElement("span");
+  btn1.className = "expandButton";
+  btn1.textContent = "+";
+  haber1.appendChild(btn1);
+  //2.adım
+  btn1.addEventListener("click", function () {
+    haber1.classList.toggle("article-open");
+  });
+  //3.adım
+  return haber1;
+}
+// 4.adım
+const haberlerContainer = document.querySelector(".articles");
+data.forEach((haberler) => {
+  const haberBileseni = haberYapici(haberler);
+  haberlerContainer.appendChild(haberBileseni);
+});
+//5.adım
+const yeniHaber = {
+  baslik: "Yazılım Dünyası Workintech Öğrencileriyle Büyüyor!",
+  tarih: "26.07.2023",
+  ilkParagraf: `Lorem ipsum dolor sit amet. Id eius veniam et repellat possimus et tempora voluptas non minus consequatur. Qui quod galisum ut rerum dignissimos et sint fugiat hic voluptatem velit qui repudiandae ipsam et dolor voluptatem qui corrupti esse? Qui tempore dolores ut adipisci tempore est voluptas accusantium. Eum nesciunt aperiam ut molestias magni qui quae nemo sit consequatur modi eum odio repudiandae est beatae ipsa ut blanditiis laboriosam. Sed suscipit velit ut molestiae eaque ut totam consequatur aut voluptas nihil aut asperiores doloribus At possimus laudantium et itaque autem. Sit iste illum sed omnis voluptatem et quia tenetur eos corporis earum. Vel dolorum recusandae ex reprehenderit provident in officiis quibusdam et dolores molestiae qui magni placeat et iusto dolor?`,
+  ikinciParagraf: `Ab quam magnam eos debitis nostrum sed nihil impedit ad necessitatibus voluptate. Non aperiam veritatis et ipsam galisum ut nulla voluptatem id placeat accusantium aut atque nisi qui similique voluptate ut iusto aliquam. Quo ipsam unde et ducimus velit cum amet ipsum a mollitia molestiae ut quasi adipisci ut veritatis voluptas? Cum aliquid suscipit et provident animi est accusantium culpa eos nostrum mollitia qui eius dolores qui enim culpa? Est sunt explicabo sit accusantium deleniti aut optio odio eum fuga sunt eum doloribus saepe.`,
+  ucuncuParagraf: `Eos nulla reprehenderit vel quibusdam rerum et nostrum ipsam sed impedit quod rem quae ipsum non laboriosam vero? Et velit maiores vel nesciunt laudantium eum totam voluptatem et aspernatur aperiam. Aut dolores corrupti ad tempora voluptas eos nisi dolores et quia alias ab voluptas molestiae eum odio ipsa. Aut sequi deserunt et minima laudantium qui architecto impedit sit voluptatibus exercitationem ut suscipit amet. Aut temporibus debitis in porro sequi ut dolores autem rem velit sint. Non odio velit ut nemo illum et enim commodi rem consectetur sint. Est iure corporis est quam iusto ut nesciunt saepe aut minus iste nam maxime impedit 33 internos amet ut vitae molestias.`,
+};
+data.push(yeniHaber);
+const haberBileseni = haberYapici(yeniHaber);
+haberlerContainer.appendChild(haberBileseni);
 
 /*
   Adım 1: Haber oluşturmak için 'haberYapici' adında bir bileşen(component) oluşturun.
